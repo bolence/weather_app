@@ -1,0 +1,19 @@
+{
+    "name": "bole/weather_app",
+    "description": "Get weather data for cities",
+    "version": "1.0",
+    "autoload": {
+        "psr-4": {
+            "Weather\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bosko Boskovic",
+            "email": "bosko.boskovic@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
