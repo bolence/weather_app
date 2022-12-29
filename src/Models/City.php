@@ -3,22 +3,23 @@
 namespace Weather\Models;
 
 use Weather\Core\Model;
-use Weather\Interfaces\DBInterface;
+use Weather\Core\QueryBuilder;
 
 class City extends Model
 {
 
     protected $table_name = 'cities';
+    protected $queryBuilder;
 
-    protected function getCityByName(string $city)
+
+    protected function query()
     {
-        if (empty($city)) {
-            header("Content-Type: application/json");
-            return json_encode(['error' => 'City is required field']);
-        }
+        return (new QueryBuilder())->setModel($this);
+    }
 
-        return $city;
-        // return $this->db->searchWhere('cities', 'city_name', $city);
+    protected function getTable()
+    {
+        return $this->table_name;
     }
 
     /**

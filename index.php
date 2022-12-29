@@ -8,7 +8,7 @@ use Weather\Models\City;
 use Weather\Classes\MySQL;
 
 // $city = new City();
-echo City::getCityByName('cityname');
+ var_dump(City::query()->findByName('city_name', 'Tokyo Tokyo'));
 // echo $c->city_name;
 ?>
 

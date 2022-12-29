@@ -75,6 +75,18 @@ class DB implements DBInterface
 		return $result;
 	}
 
+	public function whereColumnName(string $table, string $columnName, $search)
+	{
+		$query = "SELECT * FROM {$table} WHERE {$columnName} = :{$search}";
+		$query = $this->db->prepare($query);
+		$query->bindParam($columnName, $search);
+		$query->execute();
+
+		$result = $query->fetch();
+
+		return $result;
+	}
+
 	/**
 	 * Get row from search param and column name
 	 *

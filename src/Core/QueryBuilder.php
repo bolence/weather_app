@@ -8,13 +8,50 @@ use Weather\Classes\DB;
 class QueryBuilder extends DB
 {
 
-    protected $db;
-
-    protected function findByName($columnName, $search = null)
+    /**
+     * Undocumented function
+     *
+     * @param integer $id
+     * @return void
+     */
+    public function find(int $id)
     {
-        // return $this->whereRowId();
+        return $this->whereRowId($this->getModel()->getTable(), $id);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param [type] $columnName
+     * @param [type] $search
+     * @return void
+     */
+    public function findByName(string $columnName, string $search)
+    {
+        return $this->searchWhere($this->getModel()->getTable(), $columnName, $search);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param Model $model
+     * @return Model
+     */
+    public function setModel(Model $model)
+    {
+        $this->model = $model;
+        return $this;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return Object
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
 
     /**
      * Handle dynamic static method calls into the model.
